@@ -4,29 +4,29 @@ set -e
 
 configure_approle(){
     
-    if [ ! -d /vault/config ]; then
-        mkdir -p /vault/config
+    if [ ! -d "/${APP_PATH}/config" ]; then
+        mkdir -p "/${APP_PATH}/config"
     fi
 
     if [ "${VAULT_ADDR}" == "" ]; then
         export VAULT_ADDR="https://vault.grupocr.local"
-        export VAULT_CAPATH="/vault/config/cacerts"
+        export VAULT_CAPATH="/${APP_PATH}/config/cacerts"
     fi
 
     if [ "${VAULT_ROLE_ID}" != "" ]; then
-        echo "${VAULT_ROLE_ID}" > /vault/config/roleid
+        sudo echo "${VAULT_ROLE_ID}" > /${APP_PATH}/config/roleid
     fi
 
     if [ "${VAULT_SECRET_ID}" != "" ]; then
-        echo "${VAULT_SECRET_ID}" > /vault/config/secretid
+        sudo echo "${VAULT_SECRET_ID}" > /${APP_PATH}/config/secretid
     fi
 }
 
 run_agent(){
     
-    vault agent -config=/vault/config.hcl >/dev/null 2>&1
-    if [ -f /vault/secrets/output.json ]; then
-        cat /vault/secrets/output.json > /dev/stdout
+    vault agent -config=/${APP_PATH}/config.hcl >/dev/null 2>&1
+    if [ -f /${APP_PATH}/secrets/output.json ]; then
+        cat /${APP_PATH}/secrets/output.json > /dev/stdout
     fi
 }
 
