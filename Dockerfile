@@ -5,7 +5,7 @@ LABEL maintainer Ruben Castro <rcastro@polizainformatica.com>
 LABEL version v1.0.0
 LABEL description Vault Agent Template
 
-COPY [ "./config/", "./config.hcl", "./entrypoint.sh", "./README.md", "/vault-template/" ]
+COPY [ "./config", "./config.hcl", "./entrypoint.sh", "./README.md", "/vault-template/" ]
 
 RUN apk add --no-cache sudo && \
     chmod +x /vault-template/entrypoint.sh && \
