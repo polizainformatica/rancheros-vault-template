@@ -11,6 +11,7 @@ RUN apk add --no-cache sudo && \
     chmod +x /vault-template/entrypoint.sh && \
     addgroup -g 1100 rancher && \
     adduser -h /home/rancher -s /bin/sh -G rancher -u 1100 -D rancher && \
+    chown rancher:rancher /vault-template && \
     echo "rancher ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vault-template
 
 VOLUME [ "/vault-template/templates" ]
