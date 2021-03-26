@@ -1,0 +1,8 @@
+# Project specific
+.tpl
+roleid
+secretid
+
+# IDEs
+.vscode
+
