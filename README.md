@@ -28,7 +28,7 @@ docker run -it --rm --cap-add IPC_LOCK \
     -e VAULT_ADDR="http://your.vault.server:8200" \
     -e VAULT_ROLE_ID="your_role_id" \
     -e VAULT_SECRET_ID="your_secret_id" \
-    -v /path/to/your-template.tpl:/vault/templates/template.tpl:ro \
+    -v /path/to/your-template.tpl:/vault-template/templates/template.tpl:ro \
     rancheros-vault-template > secret
 ```
 
@@ -36,8 +36,8 @@ docker run -it --rm --cap-add IPC_LOCK \
 docker build -t rancheros-vault-template .
 docker run -it --rm --cap-add IPC_LOCK \
     -e VAULT_ADDR="http://your.vault.server:8200" \
-    -v /path/to/your-template.tpl:/vault/templates/template.tpl:ro \
-    -v /path/to/roleid:/vault/config/roleid:ro \
-    -v /path/to/secretid:/vault/config/secretid:ro \
+    -v /path/to/your-template.tpl:/vault-template/templates/template.tpl:ro \
+    -v /path/to/roleid:/vault-template/config/roleid:ro \
+    -v /path/to/secretid:/vault-template/config/secretid:ro \
     rancheros-vault-template > secret
 ```
