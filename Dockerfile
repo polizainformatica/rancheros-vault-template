@@ -10,7 +10,7 @@ ENV APP_PATH=/rancheros-vault-template
 COPY [ "./", "/${APP_PATH}/" ]
 
 RUN apk add --no-cache sudo && \
-    chmod +x /vault/entrypoint.sh && \
+    chmod +x /${APP_PATH}/entrypoint.sh && \
     addgroup -g 1100 rancher && \
     adduser -h /home/rancher -s /bin/sh -G rancher -u 1100 -D rancher && \
     echo "rancher ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/rancheros-git
