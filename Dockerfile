@@ -1,25 +1,20 @@
-FROM vault
+FROM vault:1.7.0
 
 LABEL com.pi2k Poliza Informatica 2000 MDS SL
 LABEL maintainer Ruben Castro <rcastro@polizainformatica.com>
 LABEL version v1.0.0
 LABEL description Vault Agent Template
 
-COPY [ "./config.hcl", "./entrypoint.sh", "./README.md", "/vault-template/" ]
-COPY [ "./config/", "/vault-template/config/" ]
-
 RUN apk add --no-cache sudo && \
-    chmod +x /vault-template/entrypoint.sh && \
-    addgroup -g 1100 rancher && \
-    adduser -h /home/rancher -s /bin/sh -G rancher -u 1100 -D rancher && \
-    chown -R rancher:rancher /vault-template && \
+    addgroup rancher && \
+    adduser -h /home/rancher -s /bin/sh -G rancher -D rancher && \
     echo "rancher ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vault-template
 
-VOLUME [ "/vault-template/templates" ]
-WORKDIR /vault-template
+WORKDIR /app
+COPY [ "./config.hcl", "./entrypoint.sh", "./" ]
+COPY [ "./config/", "./config/" ]
 
 USER rancher
 
-ENTRYPOINT [ "./entrypoint.sh" ]
-
-CMD [ "template" ]
+ENTRYPOINT [ "/app/entrypoint.sh" ]
+CMD [ "-h" ]

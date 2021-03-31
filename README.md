@@ -5,7 +5,7 @@ A tool for export secrets formated by a template file from HashiCorp Vault to st
 ## Supported tags and Dockerfile links
 
 -	[`latest` (*Dockerfile*)](https://github.com/rcastropolizainformatica/rancheros-vault-template/blob/main/Dockerfile)
--	[`v1.0.0` (*Dockerfile*)](https://github.com/rcastropolizainformatica/rancheros-vault-template/blob/v1.0.0/Dockerfile)
+-	[`v1.0.1` (*Dockerfile*)](https://github.com/rcastropolizainformatica/rancheros-vault-template/blob/v1.0.1/Dockerfile)
 
 ## Template file
 
@@ -28,16 +28,6 @@ docker run -it --rm --cap-add IPC_LOCK \
     -e VAULT_ADDR="http://your.vault.server:8200" \
     -e VAULT_ROLE_ID="your_role_id" \
     -e VAULT_SECRET_ID="your_secret_id" \
-    -v /path/to/your-template.tpl:/vault-template/templates/template.tpl:ro \
-    rancheros-vault-template > secret
-```
-
-```bash
-docker build -t rancheros-vault-template .
-docker run -it --rm --cap-add IPC_LOCK \
-    -e VAULT_ADDR="http://your.vault.server:8200" \
-    -v /path/to/your-template.tpl:/vault-template/templates/template.tpl:ro \
-    -v /path/to/roleid:/vault-template/config/roleid:ro \
-    -v /path/to/secretid:/vault-template/config/secretid:ro \
-    rancheros-vault-template > secret
+    -v /path/to/your-template:/data:ro \
+    rancheros-vault-template template /data/template.tpl > secret
 ```
