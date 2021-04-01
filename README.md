@@ -4,9 +4,9 @@ A tool for export secrets formated by a template file from HashiCorp Vault to st
 
 ## Supported tags and Dockerfile links
 
--	[`latest` (*Dockerfile*)](https://github.com/rcastropolizainformatica/rancheros-vault-template/blob/main/Dockerfile)
--	[`v1.0.1` (*Dockerfile*)](https://github.com/rcastropolizainformatica/rancheros-vault-template/blob/v1.0.1/Dockerfile)
--	[`v1.0.0` (*Dockerfile*)](https://github.com/rcastropolizainformatica/rancheros-vault-template/blob/v1.0.0/Dockerfile)
+-	[`latest` (*Dockerfile*)](https://github.com/polizainformatica/rancheros-vault-template/blob/main/Dockerfile)
+-	[`v1.0.1` (*Dockerfile*)](https://github.com/polizainformatica/rancheros-vault-template/blob/v1.0.1/Dockerfile)
+-	[`v1.0.0` (*Dockerfile*)](https://github.com/polizainformatica/rancheros-vault-template/blob/v1.0.0/Dockerfile)
 
 ## Template file
 
